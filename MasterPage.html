@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"
+      id="MasterPage">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <!--<script src="http://code.jquery.com/jquery-latest.js"></script>-->
+         <script src="./Scripts/jquery-1.9.0.js" type="text/javascript"></script>
+        <link rel="StyleSheet" id="masterStyle" type="text/css" href="Styles/Master.css" media="screen" />
+    </head>
+    <body>
+        <header id="masterHeader">
+            <!-- This is a new feature in html 5 -->
+            <nav id="navigation">
+                <ul>
+                    <li class="selected"><a id="Summit" href="#">Summit 2013</a></li>
+                    <li><a id="WhatIsNew" href="#">What's new in HTML 5</a></li>
+                    <li><a id="LiveDemo" href="#">Live Demo!!!</a></li>
+                    <li><a id="References" href="#">References</a></li>
+                    <li><a id="Download" href="#">Download</a></li>
+                    <li><a id="About" href="#">About</a>
+                </ul>
+                <script>
+
+                    $('a').click(function ()
+                    {
+                        $('a').css({ 'background': '#ed4732' });
+                        this.style.background = "#f4907f";
+
+                        var anchorId = $(this).attr('id')
+                        var source = "";
+
+                        switch (anchorId)
+                        {
+                            case "Summit":
+                                source = "Views/Summit.html";
+                                break;
+                            case "WhatIsNew":
+                                source = "Views/WhatIsNew.html";
+                                break;
+                            case "LiveDemo":
+                                source = "Views/LiveDemo.html";
+                                break;
+                            case "References":
+                                source = "Views/References.html";
+                                break;
+                            case "Download":
+                                source = "Views/Download.html";
+                                break;
+                            case "About":
+                                source = "Views/About.html";
+                                break;
+                        }
+
+                        $('#ifr').attr('src', source);
+                    });
+
+                </script>
+            </nav>
+            <!-- This is a new feature in html 5 -->
+          
+            <img style="position: absolute; top: 7%; width:15%;" src="Images/html5OrangeLogo.jpg" alt="#">
+           
+            <script>
+                
+                $('img').mouseover(function (event) { this.src = 'Images/html5BlackLogo.jpg';});
+                $('img').mouseout(function (event) { this.src = 'Images/html5OrangeLogo.jpg';});
+                
+            </script>
+            <iframe id="ifr" style="overflow:hidden;"></iframe>
+        </header>
+        <footer>We love nice solutions!!!</footer>
+    </body>
+</html>
