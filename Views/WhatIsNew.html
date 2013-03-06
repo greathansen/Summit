@@ -1,11 +1,160 @@
-<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Web Workers</title>
+    <link href="../Styles/prettify.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/desert.css" rel="stylesheet" type="text/css">
+    <link href="../Styles/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body onload="prettyPrint()">
+    <header>
+        <h1>
+            ATAG Summit 2013 - HTML5 Presentation </h1>
+        <nav>
+            <ul>
+                <li>
+                    <button id="prev-btn" title="Previous slide">
+                        Previous Slide</button></li>
+                <li><span id="slide-number"></span>/<span id="slide-total"></span></li>
+                <li>
+                    <button id="next-btn" title="Next Slide">
+                        Next Slide</button></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="deck">
+        <!-- Begin slides -->
+        <section>
+            <h3>
+                JavaScript API - Web Workers</h3>
+            <h1>
+                The concurrency problem</h1>
+            <ul>
+                <li>JavaScript is a single-threaded environment, meaning multiple scripts cannot run
+                    at the same time.</li>
+                <li>Script execution happens within a single thread.</li>
+                <li>Developers mimic 'concurrency' by using techniques like setTimeout(), setInterval(),
+                    XMLHttpRequest, and event handlers.</li>
+                <li>All of these features run asynchronously, but non-blocking doesn't necessarily mean
+                    concurrency</li>
+                <li>Asynchronous events are processed after the current executing script has yielded</li>
+            </ul>
+        </section>
+        <section>
+            <h3>
+                JavaScript API - Web Workers</h3>
+            <h1>
+                A common scenario</h1>
+            <ul>
+                <li>
+                    <img src="../Images/longscriptrun.png" alt="long running script dialog" /></li>
+                <li>Web Workers allow you to do things like fire up long-running scripts to handle computationally
+                    intensive tasks, but without blocking the UI or other scripts to handle user interactions.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>
+                JavaScript API - Web Workers</h3>
+            <h1>
+                Getting Started with Web Workers</h1>
+            <ul>
+                <li>Workers utilize thread-like message passing to achieve parallelism. They're perfect
+                    for keeping your UI refresh, performant, and responsive for users. </li>
+                <li>Web Workers run in an isolated thread</li>
+                <li>The code that they execute needs to be contained in a separate file</li>
+            </ul>
+            <p>
+                Create a new Worker object in your main page</p>
+            <pre class="prettyprint">var simpleWorker = new Worker('doSomeWork.js');</pre>
+            <p>
+                If the specified file exists, the browser will spawn a new worker thread, which
+                is downloaded asynchronously. The worker will not begin until the file has completely
+                downloaded and executed. If the path to your worker returns an 404, the worker will
+                fail silently.</p>
+            <p>
+                After creating the worker, start it by calling the postMessage() method:</p>
+            <pre class="prettyprint">simpleWorker.postMessage(); // Start the worker.</pre>
+        </section>
+        <section>
+            <h3>
+                JavaScript API - Web Workers</h3>
+            <h1>
+                Hello WebWorker
+            </h1>
+            <ul>
+                <li>Communication between a work and its parent page is done using an event model and
+                    the postMessage() method.</li>
+            </ul>
+            <p>
+                Main Page</p>
+            <pre class="prettyprint">
+        var simpleWorker = new Worker('doSomeWork.js');
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-    </head>
-    <body>
-        
-    </body>
+        simpleWorker.addEventListener('message', function(e) {
+          console.log('Simple Worker said: ', e.data);
+        }, false);
+            
+        simpleWorker.postMessage('Hello World'); // Send data to our worker. </pre>
+            <p>
+                worker file (doSomeWork.js)</p>
+            <pre class="prettyprint">
+        self.addEventListener('message', function(e) {
+          self.postMessage(e.data);
+        }, false); </pre>
+        </section>
+        <section>
+            <h3>
+                JavaScript API - Web Workers</h3>
+            <h1>
+                FEATURES AVAILABLE TO WORKERS
+            </h1>
+            <p>
+                Web workers only has access to a subset of JavaScript's features:</p>
+            <ul>
+                <li>The navigator object </li>
+                <li>The location object (read-only) </li>
+                <li>XMLHttpRequest </li>
+                <li>setTimeout()/clearTimeout() and setInterval()/clearInterval()</li>
+                <li>The Application Cache </li>
+                <li>Importing external scripts using the importScripts() method </li>
+                <li>
+                Spawning other web workers
+            </ul>
+            <p>
+                Workers do NOT have access to:</p>
+            <ul>
+                <li>The DOM (it's not thread-safe)</li>
+                <li>The window object </li>
+                <li>The document object </li>
+                <li>The parent object </li>
+            </ul>
+        </section>
+    </div>
+    <script type="text/javascript" src="../Scripts/prettify.js"></script>
+    <script type="text/javascript" src="../Scripts/html5shim.js"></script>
+    <script type="text/javascript" src="../Scripts/htmlSlides.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.jswipe-0.1.2.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.9.0.js"></script>
+    <script type="text/javascript">
+        //        //Do our business when the DOM is ready for us
+        $(function () {
+
+            //            //You can trigger Javascript based on the slide number like this:
+            //            $('html').bind('newSlide', function (e, id) {
+            //                switch (id) {
+            //                    case 2:
+            //                        console.log('This is the second slide.'); ;
+            //                        break;
+            //                    case 3:
+            //                        console.log('Hello, third slide.');
+            //                        break;
+            //                }
+            //            });
+
+            //One little option: hideToolbar (boolean; default = false)
+            htmlSlides.init();
+
+        });
+    </script>
+</body>
 </html>
