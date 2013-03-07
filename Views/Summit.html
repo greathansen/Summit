@@ -1,11 +1,78 @@
-<!DOCTYPE html>
+<html>
+<head>
+    <title>Agenda</title>
+    <style>
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-    </head>
-    <body>
-        
-    </body>
+	html { font-family: Segoe UI; background-color: #FAE1EB; }
+	h1 {color: red; position: relative;  }
+	h2 {color: red; font-size: 37px;}
+	h3 {color: red; font-size: 28px;}
+
+
+
+       #MainTitle {
+		-webkit-animation: FunnyTitle;
+		-webkit-animation-duration: 2.5s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-timing-function: ease;
+        }
+
+          
+ @-webkit-keyframes FunnyTitle {
+          from {
+            left: -10px;
+		top: 0px;
+            opacity: 1;
+ font-size: 35px;
+          }
+
+          25% {
+            left: 20px;
+		top: 20px;
+            opacity: 1;
+          }
+
+    
+          50% {
+            left: 20px;
+		top: 5px;
+            opacity: 1;
+ font-size: 50px;
+          }
+
+          75% {
+            left: -10px;
+		top: 20px;
+            opacity: 1;
+ font-size: 80px;
+          }
+
+          to {
+           left: -10px;
+		top: 0px;
+            opacity: 1;
+font-size: 35px;
+          }
+        }
+
+
+    </style>
+
+</head>
+<body>
+<center>
+<h1 id="mainTitle">AGENDA</h1>
+</div>
+	<h2>Intro</h2>
+	<h2>HTML Elements</h2>
+	<h3>Browsers compatibility</h3>
+	<h3>Modernizer</h3>
+	<h2>javascript api</h2>
+	<h3>connectivity (webworkers, websockets)</h3>
+	<h3>Snippets: geolocation, fileaccess, storage</h3>
+	<h2>Hey, Ho, Let's code</h2>
+</center>
+</body>
 </html>
+
+
