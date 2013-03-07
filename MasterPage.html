@@ -18,12 +18,12 @@
                 <script>
                     $('a').click(function ()
                     {
-                        $('a').css({ 'background': '#ed4732' });
+                        $('li a').css({ 'background': '#ed4732' });
                         this.style.background = "#f4907f";
-                    
+
                         var anchorId = $(this).attr('id')
                         var source = "";
-                    
+
                         switch (anchorId)
                         {
                             case "Summit":
@@ -33,7 +33,7 @@
                                 source = "Views/WhatIsNew.html";
                                 break;
                             case "LiveDemo":
-                                if(sessionStorage.MFUserName == undefined)
+                                if (sessionStorage.MFUserName == undefined)
                                     source = "Views/LogIn.html";
                                 else
                                     source = "Views/LiveDemo.html";
@@ -42,25 +42,31 @@
                                 source = "Views/References.html";
                                 break;
                         }
-                    
+
                         $('#ifr').attr('src', source);
                     });
-                    
+
                 </script>
             </nav>
         </header>
-        <img style="position: absolute; top: 7%; height: 16%; width:8%; left: 4%; " src="Images/html5OrangeLogo.jpg" alt="#">
+        </style>
+        <img id="htmlLogo" style="position: absolute; top: 7%; height: 16%; width:8%; left: 4%;" src="Images/html5OrangeLogo.jpg" alt="#">
+
+        <a class="gitHubIcon" href="https://github.com/greathansen/Summit" target="_blank" title="https://github.com/greathansen/Summit">
+            <img id="gihubLogo" src="Images/github.jpg" alt="#" style="height: 100%; width:100%;">
+        </a>
 
         <script>
             $(document).ready(function ()
             {
                 $('#LoggedIn').html('<span><b>' + 'Loggued User:  ' + sessionStorage.MFUserName + '</b></span>');
-                $('img').mouseover(function (event) { this.src = 'Images/html5BlackLogo.jpg'; });
-                $('img').mouseout(function (event) { this.src = 'Images/html5OrangeLogo.jpg'; });
+                $('#htmlLogo').mouseover(function (event) { this.src = 'Images/html5BlackLogo.jpg'; });
+                $('#htmlLogo').mouseout(function (event) { this.src = 'Images/html5OrangeLogo.jpg'; });
+                
             });
         </script>
         <iframe id="ifr" style="overflow:hidden;" src="Views/Summit.html"></iframe>
 
-        <!--<div>We love nice solutions!!!</div>-->
+        <footer><span>>>>We love nice solutions!!!<<<</span></footer>
     </body>
 </html>

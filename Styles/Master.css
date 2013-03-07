@@ -1,6 +1,6 @@
 #navigation {
     font-family: 'Open Sans',sans-serif;
-    background-color:#ed4732;
+    background-color: #ed4732;
     text-transform: uppercase;
     text-align: center;
     font-size: small;
@@ -34,13 +34,34 @@ a {
     color: #fff;
     height: 3%;
 }
-  
+
 #ifr {
     background-image: url('http://1-ps.googleusercontent.com/x/s.html5rocks-hrd.appspot.com/www.html5rocks.com/static/images/xbackground.png.pagespeed.ic.AZyBvBeWF2.webp');
     position: absolute;
     border-color: #f4907f;
-    height: 93%;
+    height: 90%;
     width: 70%;
     left: 15%;
     top: 5%;
+}
+
+.gitHubIcon {
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    height: 70px;
+    width: 70px;
+}
+
+a.gitHubIcon:hover {
+    margin-top: 10px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    left: 40%;
+    font-family: 'Open Sans',sans-serif;
+    background-color: #ed4732;
+    color: #fff;
 }
