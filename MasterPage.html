@@ -48,19 +48,19 @@
                     
                 </script>
             </nav>
-            <img style="position: absolute; top: 7%; height: 16%; width:8%; left: 4%; " src="Images/html5OrangeLogo.jpg" alt="#">
-
-            <script>
-                $(document).ready(function ()
-                {
-                    $('#LoggedIn').html('<span><b>' + 'Loggued User:  ' + sessionStorage.MFUserName + '</b></span>');
-                    $('img').mouseover(function (event) { this.src = 'Images/html5BlackLogo.jpg'; });
-                    $('img').mouseout(function (event) { this.src = 'Images/html5OrangeLogo.jpg'; });
-                });
-                
-            </script>
-            <iframe id="ifr" style="overflow:hidden;" src="Views/Summit.html"></iframe>
         </header>
+        <img style="position: absolute; top: 7%; height: 16%; width:8%; left: 4%; " src="Images/html5OrangeLogo.jpg" alt="#">
+
+        <script>
+            $(document).ready(function ()
+            {
+                $('#LoggedIn').html('<span><b>' + 'Loggued User:  ' + sessionStorage.MFUserName + '</b></span>');
+                $('img').mouseover(function (event) { this.src = 'Images/html5BlackLogo.jpg'; });
+                $('img').mouseout(function (event) { this.src = 'Images/html5OrangeLogo.jpg'; });
+            });
+        </script>
+        <iframe id="ifr" style="overflow:hidden;" src="Views/Summit.html"></iframe>
+
         <!--<div>We love nice solutions!!!</div>-->
     </body>
 </html>
