@@ -76,26 +76,26 @@
         </div>
 
         <script>
-            if(typeof(Storage)!=="undefined")
-              document.getElementById("lblLocalSessionStorage").innerHTML = "localStorage and sessionStorage are supported.";
+            if (typeof (Storage) !== "undefined")
+                document.getElementById("lblLocalSessionStorage").innerHTML = "localStorage and sessionStorage are supported.";
             else
-              document.getElementById("lblLocalSessionStorage").innerHTML = "localStorage and sessionStorage are not supported.";
-            
+                document.getElementById("lblLocalSessionStorage").innerHTML = "localStorage and sessionStorage are not supported.";
+
             function AddUserNameToSessionStorage()
             {
-                if(!document.getElementById("formDoLogin").checkValidity())
+                if (!document.getElementById("formDoLogin").checkValidity())
                     return false;
-            
+
                 sessionStorage.MFUserName = document.getElementById("eMail").value;
-            
+             
                 return true;
             }
-            
+
             function RefreshloggedUser()
             {
                 document.getElementById("lblLoggedInUser").innerHTML = sessionStorage.MFUserName;
             }
-            
+
             function getLoggedInUser()
             {
                 return sessionStorage.MFUserName;
