@@ -5,11 +5,15 @@
     <link href="../Styles/prettify.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/desert.css" rel="stylesheet" type="text/css">
     <link href="../Styles/styles.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        
+    </style>
 </head>
 <body onload="prettyPrint()">
     <header>
         <h1>
-            ATAG Summit 2013 - HTML5 Presentation </h1>
+            ATAG Summit 2013 - HTML5 Presentation
+        </h1>
         <nav>
             <ul>
                 <li>
@@ -25,35 +29,47 @@
     <div id="deck">
         <!-- Begin slides -->
         <section>
-            <h3>
+            <div>
+                JavaScript API - Web Workers</div>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
                 JavaScript API - Web Workers</h3>
             <h1>
                 The concurrency problem</h1>
-            <ul>
-                <li>JavaScript is a single-threaded environment, meaning multiple scripts cannot run
-                    at the same time.</li>
-                <li>Script execution happens within a single thread.</li>
-                <li>Developers mimic 'concurrency' by using techniques like setTimeout(), setInterval(),
-                    XMLHttpRequest, and event handlers.</li>
-                <li>All of these features run asynchronously, but non-blocking doesn't necessarily mean
-                    concurrency</li>
-                <li>Asynchronous events are processed after the current executing script has yielded</li>
-            </ul>
+            <div>
+                <div>
+                    <img src="../Images/geeknpoke-concurrency.png" alt="Concurrency comic" />
+                </div>
+                <div>
+                    <ul>
+                        <li>JavaScript is a single-threaded environment, meaning multiple scripts cannot run
+                            at the same time.</li>
+                        <li>Script execution happens within a single thread.</li>
+                        <li>Developers mimic 'concurrency' by using techniques like setTimeout(), setInterval(),
+                            XMLHttpRequest, and event handlers.</li>
+                        <li>All of these features run asynchronously, but non-blocking doesn't necessarily mean
+                            concurrency</li>
+                        <li>Asynchronous events are processed after the current executing script has yielded</li>
+                    </ul>
+                </div>
+            </div>
         </section>
         <section>
-            <h3>
+            <h3 style="text-align: right;">
                 JavaScript API - Web Workers</h3>
             <h1>
                 A common scenario</h1>
             <ul>
                 <li>
-                    <img src="../Images/longscriptrun.png" alt="long running script dialog" /></li>
+                    <img src="../Images/longscriptrun.png" alt="long running script dialog" width="600px"
+                        height="200px" /></li>
                 <li>Web Workers allow you to do things like fire up long-running scripts to handle computationally
                     intensive tasks, but without blocking the UI or other scripts to handle user interactions.</li>
             </ul>
         </section>
         <section>
-            <h3>
+            <h3 style="text-align: right;">
                 JavaScript API - Web Workers</h3>
             <h1>
                 Getting Started with Web Workers</h1>
@@ -63,6 +79,14 @@
                 <li>Web Workers run in an isolated thread</li>
                 <li>The code that they execute needs to be contained in a separate file</li>
             </ul>
+            <p>
+                Browser support using Modernizr</p>
+            <pre class="prettyprint">if (Modernizr.webworkers) {
+    alert("Web Workers ARE supported");
+}
+else {
+    alert("Web Workers ARE NOT supported");
+}</pre>
             <p>
                 Create a new Worker object in your main page</p>
             <pre class="prettyprint">var simpleWorker = new Worker('doSomeWork.js');</pre>
@@ -76,7 +100,7 @@
             <pre class="prettyprint">simpleWorker.postMessage(); // Start the worker.</pre>
         </section>
         <section>
-            <h3>
+            <h3 style="text-align: right;">
                 JavaScript API - Web Workers</h3>
             <h1>
                 Hello WebWorker
@@ -103,7 +127,7 @@
         }, false); </pre>
         </section>
         <section>
-            <h3>
+            <h3 style="text-align: right;">
                 JavaScript API - Web Workers</h3>
             <h1>
                 FEATURES AVAILABLE TO WORKERS
@@ -129,6 +153,127 @@
                 <li>The parent object </li>
             </ul>
         </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Workers</h3>
+            <h1>
+                SECURITY TIPS
+            </h1>
+            <h2>
+                RESTRICTIONS WITH LOCAL ACCESS</h2>
+            <ul>
+                <li>Due to Google Chrome's security restrictions, workers will not run locally (e.g.
+                    from file://) in the latest versions of the browser. Instead, they fail silently!</li>
+                <li>To run your app from the file:// scheme, run Chrome with the --allow-file-access-from-files
+                    flag set. </li>
+            </ul>
+            <h2>
+                SAME ORIGIN CONSIDERATIONS</h2>
+            <ul>
+                <li>Worker scripts must be external files with the same scheme as their calling page.
+                    Thus, you cannot load a script from a data: URL or javascript: URL, and an https:
+                    page cannot start worker scripts that begin with http: URLs.</li>
+            </ul>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+            <p>
+                &quot;The web has been largely built around the so called request/response paradigm of
+                HTTP.&quot;</p>
+            <h2>
+                Today&acute;s web app require&#8230;</h2>
+            <ul>
+                <li>Real time (minimal latency)</li>
+                <li>Full duplex </li>
+            </ul>
+            <h2>
+                For&#8230;</h2>
+            <ul>
+                <li>Social Networking </li>
+                <li>Online Games </li>
+                <li>Collaborative platforms</li>
+                <li>Finnancial applications</li>
+            </ul>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+            <h2>
+                According to W3C</h2>
+            <p>
+                &quot;Abstract: This specification defines an API that enables Web pages to use the WebSocket
+                protocol (defined by the IETF) for two-way communication with a remote host.&quot;
+            </p>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+            <h2>
+                SERVER SIDE IMPLEMENTATIONS</h2>
+            <p>
+                Node.js</p>
+            <ul>
+                <li>Socket.IO </li>
+                <li>WebSocket-Node</li>
+                <li>ws</li>
+            </ul>
+            <p>
+                Java</p>
+            <ul>
+                <li>Jetty</li>
+            </ul>
+            <p>
+                Ruby</p>
+            <ul>
+                <li>EventMachine </li>
+            </ul>
+            <p>
+                Python</p>
+            <ul>
+                <li>pywebsocket</li>
+                <li>Tornado</li></ul>
+            <p>
+                .NET</p>
+            <ul>
+                <li>SuperWebSocket</li></ul>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+        </section>
     </div>
     <script type="text/javascript" src="../Scripts/prettify.js"></script>
     <script type="text/javascript" src="../Scripts/html5shim.js"></script>
@@ -136,24 +281,8 @@
     <script type="text/javascript" src="../Scripts/jquery.jswipe-0.1.2.js"></script>
     <script type="text/javascript" src="../Scripts/jquery-1.9.0.js"></script>
     <script type="text/javascript">
-        //        //Do our business when the DOM is ready for us
         $(function () {
-
-            //            //You can trigger Javascript based on the slide number like this:
-            //            $('html').bind('newSlide', function (e, id) {
-            //                switch (id) {
-            //                    case 2:
-            //                        console.log('This is the second slide.'); ;
-            //                        break;
-            //                    case 3:
-            //                        console.log('Hello, third slide.');
-            //                        break;
-            //                }
-            //            });
-
-            //One little option: hideToolbar (boolean; default = false)
             htmlSlides.init();
-
         });
     </script>
 </body>
