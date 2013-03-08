@@ -256,17 +256,19 @@ else {
                 host.&quot;
             </p>
             <h2>
-                WebSockets are a new technology that attempts to resolve some of these limitations by:</h2>
+                WebSockets are a new technology that attempts to resolve some of these limitations
+                by:</h2>
             <ul>
                 <li>Sending the minimum amount of data necessary</li>
                 <li>Making more efficient usage of bandwidth</li>
                 <li>Providing cross domain support</li>
                 <li>Still operating over HTTP so it can transverse firewalls and proxies</li>
                 <li>Works with some load balancers (TCP l4)</li>
-                <li>Provides support for binary data (note some JavaScript implementations don&rsquo;t currently
-                    support this)</li>
+                <li>Provides support for binary data (note some JavaScript implementations don&rsquo;t
+                    currently support this)</li>
             </ul>
-            <h2>When would web sockets be a suitable protocol for your application?</h2>
+            <h2>
+                When would web sockets be a suitable protocol for your application?</h2>
             <p>
                 You might want to consider using web sockets in the following scenarios:</p>
             <ul>
@@ -275,6 +277,31 @@ else {
                 <li>Chat applications</li>
                 <li>News tickers</li>
             </ul>
+        </section>
+        <section>
+            <h3 style="text-align: right;">
+                JavaScript API - Web Sockets</h3>
+            <h1>
+                WebSocket Events</h1>
+            <ul>
+                <li><strong>onopen:</strong> When a socket has opened</li><li><strong>onmessage:</strong>
+                    When a message has been received</li><li><strong>onclose:</strong> When a socket has
+                        been closed</li></ul>
+            <h2>
+                Geting started with WebSockets</h2>
+            <pre class="prettyprint">
+var socket = new WebSocket("ws://localhost:8000/startServer.aspx");
+
+//Notify me when the WebSocked was opened
+socket.onopen = function(){
+	alert("Socket has been opened!");
+}
+
+//Receiving a message
+socket.onmessage = function(msg){
+	alert(msg);	//Awesome!
+}
+            </pre>
         </section>
         <section>
             <h3 style="text-align: right;">
