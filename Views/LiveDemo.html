@@ -46,7 +46,7 @@
     </head>
 
     <body>
-        <div style="position: absolute; top: 20px; left: 280px;">
+        <div>
             <table>
                 <tr>
                     <td>
@@ -74,24 +74,23 @@
                         </ul>
                     </td>
                     <td>
-                        <div style="position: absolute; left:250px; top:10px; height: 120px;">
+                        <div style="position: absolute; left:250px; top:20px; height: 120px;">
                             <img id="image" src="..\Images\1.jpg" alt="..\Images\html5OrangeLogo.jpg" style="height: 120px;" />
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <audio id="myPlayerMusic" preload="auto" tabindex="0" controls="">
+                        <audio id="myMusicPlayer" preload="auto" tabindex="0" controls="">
                             <source src="..\Music\Fixed Frequencies.mp3" type="audio/mpeg" />
                         </audio>
                     <td>
                 </tr>
             </table>
         </div>
-
+        <iframe src="../Views/Tutorial.html" style="height:63%; width:99%;"></iframe>
         <script src="../Scripts/jquery-1.9.0.js" type="text/javascript"></script>
         <script src="../Scripts/MusicPlayer.js" type="text/javascript"></script>
-
         <script>
             $(document).ready(function ()
                 {

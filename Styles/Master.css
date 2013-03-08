@@ -47,9 +47,9 @@ a {
 
 .gitHubIcon {
     position: absolute;
-    top: 25%;
-    left: 5%;
-    height: 70px;
+    top: 5%;
+    right: 5%;
+    height: 72px;
     width: 70px;
 }
 

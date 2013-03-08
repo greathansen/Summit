@@ -1,4 +1,4 @@
-var myPlayerMusic = $('#myPlayerMusic');
+var myMusicPlayer = $('#myMusicPlayer');
 var myPlayList = $('#myPlayList');
 var tracks = myPlayList.find('li a');
 var playListIndex = 0;
@@ -15,7 +15,7 @@ myPlayList.find('a').click(function(e)
     play(link);
 });
 
-myPlayerMusic[0].addEventListener('ended', function()
+myMusicPlayer[0].addEventListener('ended', function()
 {
     var link;
     playListIndex++;
@@ -53,10 +53,10 @@ myPlayerMusic[0].addEventListener('ended', function()
 function play(link)
 {
     changeImage();
-    myPlayerMusic[0].src = link.attr('href');
+    myMusicPlayer[0].src = link.attr('href');
     link.parent().addClass('selected').siblings().removeClass('selected');
-    myPlayerMusic[0].load();
-    myPlayerMusic[0].play();
+    myMusicPlayer[0].load();
+    myMusicPlayer[0].play();
 }
 
 function changeImage()

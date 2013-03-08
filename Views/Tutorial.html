@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link href="../Styles/prettify.css" rel="stylesheet" type="text/css" />
+        <link href="../Styles/desert.css" rel="stylesheet" type="text/css">
+        <link href="../Styles/styles.css" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            .centerTitle
+            {
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
+                background-color: #b0e0e6;
+                text-align: center;
+                height: 50px;
+                font-size: xx-large;
+            }
+            .centerImage
+            {
+                margin-left: auto;
+                margin-right: auto;
+                width: 100%;
+                margin-top: 25px;
+            }
+        </style>
+    </head>
+    <body onload="prettyPrint()">
+        <header>
+            <h1>
+            Live Demo Steps
+            </h1>
+            <nav>
+                <ul>
+                    <li>
+                        <button id="prev-btn" title="Previous slide">
+                        Previous Slide</button></li>
+                    <li><span id="slide-number"></span>/<span id="slide-total"></span></li>
+                    <li>
+                        <button id="next-btn" title="Next Slide">
+                        Next Slide</button></li>
+                </ul>
+            </nav>
+        </header>
+        <div id="deck">
+            <!-- Begin slides -->
+            <section>
+                <h1>
+                Code Time</h1>
+
+                
+            </section>
+
+
+            <section>
+                <h2>
+                Step 1:</h2>
+                <ul>
+                    <li>Add the HTML element audio.</li>
+                    <li>We add the source that has the song path.</li>
+                </ul>
+
+                <pre class="prettyprint">
+<span class="tag">&lt;audio</span> id="myMusicPlayer" preload="auto" tabindex="0" controls="">
+     <span class="tag">&lt;source</span> src="..\Music\Fixed Frequencies.mp3" 
+           type="audio/mpeg" />
+<span class="tag">&lt;/audio</span>>
+                </pre>
+            </section>
+
+            <section>
+                <h2>
+                Step 2:</h2>
+                <ul>
+                    <li>Create the list with the songs.</li>
+                    <li>For this we add a unordered list and inside an anchor element with the song path.</li>
+                </ul>
+                <pre class="prettyprint">
+<span class="tag">&lt;ul id="myPlayList"></span>
+    <span class="tag">&lt;li></span>
+   <span class="tag">&lt;a href="..\Music\Fixed Frequencies.mp3">Fixed Frequencies<span class="tag">&lt;/a></span></span>
+    <span class="tag">&lt;/li></span>
+...
+<span class="tag">&lt;/ul></span>              
+                </pre>
+            </section>
+
+            <section>
+                <h2>
+                Step 3:</h2>
+                <ul>
+                    </br>
+                    <li>We have to asociate the anchor click event with the audio element.</li>
+                    <li>We have to add some javascript code.<br></li>
+                    <li>When we click on an anchor link the song should be loaded.</li>
+                    <li>We need the jquery library.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Step 3:</h2>
+                <pre class="prettyprint">
+var myPlayList = $('#myPlayList');
+var playListIndex = 0;
+myPlayList.find('a').click(function(e)
+{
+    e.preventDefault();
+    var link = $(this);
+    playListIndex = link.parent().index();
+    play(link); // we have to create the function play.
+});
+                </pre>
+            </section>
+
+            <section>
+                <h2>Step 4:</h2>
+                <ul>
+                    </br>
+                    <li>We will create the function play.</li>
+                    <li>The function play first assign the source of the audio element with the value of the link(in this case is the song path)<br></li>
+                    <li>Then it's loading the song in the audio element</li>
+                    <li>Finally,it executes the play function for starting reproduce the song.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Step 4: Create the function play</h2>
+                  </br>
+                <pre class="prettyprint">
+var myMusicPlayer = $('#myMusicPlayer');
+function play(link)
+{
+    myMusicPlayer[0].src = link.attr('href');
+    myMusicPlayer[0].load();
+    myMusicPlayer[0].play();
+}
+                </pre>
+            </section>
+        </div>
+        <script type="text/javascript" src="../Scripts/jquery-1.9.0.js"></script>
+        <script type="text/javascript" src="../Scripts/prettify.js"></script>
+        <script type="text/javascript" src="../Scripts/htmlSlides.js"></script>
+        <script type="text/javascript" src="../Scripts/jquery.jswipe-0.1.2.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                htmlSlides.init();
+            });
+        </script>
+    </body>
+</html>
