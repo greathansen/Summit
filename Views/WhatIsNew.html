@@ -53,7 +53,20 @@
                         <li>Candidate Recommendation by W3C.</li>
                         <li>Major browsers support many of the new HTML5 elements and APIs.</li>
                     </ul>
-                </div>                
+                </div>   
+<p></p>
+
+<div>
+	<h1>Some rules for HTML5</h1>
+        <ul>
+	        <li>New features should be based on HTML, CSS, DOM, and JavaScript.</li>
+	        <li>Reduce the need for external plugins (like Flash)</li>
+	        <li>Better error handling.</li>
+	        <li>More markup to replace scripting.</li>
+	        <li>HTML5 should be device independent.</li>
+	        <li>The development process should be visible to the public.</li>
+        </ul>
+</div>   
 </section> 
  <section>
             <div class="centerTitle">Intro & Recap</div>
@@ -116,7 +129,41 @@
 <li>wbr Defines a possible line-break</li>
 </ul>
 </div>
-</section>        <section>
+</section>    
+
+    <section>
+            <div class="centerTitle">
+                HTML5 Elements</div>
+<div>
+
+<h1>A sample of an article content. Can this be done without Article?</h1>
+<article>
+<header>Breaking news: Newly weds in Santa Rosa</header>
+<p>People that use to live in crowded places are often prone to live happier lives.</p>
+<p>This doesnt mean that this text is current or even true.</p>
+<p>Fortunately it helps us to fill this document with words that compound an article.</p>
+<small class="author">Napoleon Bonaparte</small>
+</article>
+</div>
+
+<p></p>
+<div class="centerTitle">Figure element</div>
+<figure>
+<img src="../Images/mozzila.gif" />
+  <figcaption>by Mozilla</figcaption>
+</figure>
+
+            <pre class="prettyprint">
+<span class="tag">&lt;figure>
+<span class="tag">&lt;img src="../Images/mozzila.gif" />
+  <span class="tag">&lt;figcaption>by Mozilla<span class="tag">&lt;/figcaption>
+<span class="tag">&lt;/figure>
+
+</pre>
+
+</section>
+
+    <section>
             <div class="centerTitle">
                 HTML5 Elements</div>
 <div>
@@ -170,7 +217,61 @@
 </div>
         </section>
 
-        <section>
+<section>
+<div class="centerTitle">HTML5 Elements - Video tag sample</div>
+
+<video width="320" height="240" controls>
+  <source src="../images/bear.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<pre class="prettyprint">
+	<span class="tag">&lt;video width="320" height="240" controls>
+	<span class="tag">&lt;source src="../images/bear.mp4" type="video/mp4">
+	Your browser does not support the video tag.
+	<span class="tag">&lt;/video>
+</pre>
+
+</section>
+<section>
+<div class="centerTitle">HTML5 Elements - Canvas tag sample</div>
+
+<p></p>
+
+<canvas id="textWithCircle" width="200" height="100" style="border:1px solid #d3d3d3;">
+canvas tag not supported.</canvas>
+
+<script>
+	var c=document.getElementById("textWithCircle");
+	var ctx=c.getContext("2d");
+	ctx.font="30px Arial";
+	ctx.fillText("Hello World",10,50);
+
+	ctx.beginPath();
+	ctx.arc(95,50,40,0,2*Math.PI);
+	ctx.stroke();
+
+</script>
+<p></p>
+
+<pre class="prettyprint">
+	<span class="tag">&lt;video width="320" height="240" controls>
+<span class="tag">&lt;canvas id="textWithCircle" width="200" height="100" style="border:1px solid #d3d3d3;">
+canvas tag not supported.<span class="tag">&lt;/canvas>
+
+<span class="tag">&lt;script>
+	var c=document.getElementById("textWithCircle");
+	var ctx=c.getContext("2d");
+	ctx.font="30px Arial";
+	ctx.fillText("Hello World",10,50);
+	ctx.beginPath();
+	ctx.arc(95,50,40,0,2*Math.PI);
+	ctx.stroke();
+<span class="tag">&lt;/script>
+</pre>
+
+</section>
+<section>
            	<style>
 				#summittest
 				{
@@ -267,13 +368,30 @@
                     </ul>
 			
 			<div id="summittest"><h2>This is a summit test.</h2></div>
-			<div id="summittest2"><img src="../Images/mozzila.gif" alt="Worker" /></div>
+			<div id="summittest2"><img src="../Images/mozzila.gif"  /></div>
 			<div id="Noscaled"><h2>34</h2></div>
 			<div id="scaledX"><h2>34</h2></div>
 			<div id="scaledY"><h2>34</h2></div>
 			<div id="rotated"><h2>34</h2></div>
              </div>                
 	</section> 
+        <section>
+            <div class="centerTitle">
+                CSS3 Font-Face sample</div>
+<p></p>
+
+            <pre class="prettyprint">
+@font-face {
+    font-family: DeliciousRoman;
+    src: url(http://www.font-face.com/fonts/delicious/Delicious-Roman.otf);
+    font-weight:400;
+}
+
+p {
+    font-family: DeliciousRoman, Helvetica, Arial, sans-serif;
+}
+</pre>
+        </section>
 
         <section>
             <div class="centerTitle">
@@ -287,6 +405,9 @@
             <h1>
                 The concurrency problem</h1>
             <div>
+                <div>
+                    <img src="../Images/geeknpoke-concurrency.png" alt="Concurrency comic" />
+                </div>
                 <div>
                     <ul>
                         <li>JavaScript is a single-threaded environment, meaning multiple scripts cannot run
