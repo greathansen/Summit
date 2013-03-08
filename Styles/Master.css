@@ -57,6 +57,10 @@ a.gitHubIcon:hover {
     margin-top: 10px;
 }
 
+li a:hover {
+    background: #f4907f;
+}
+
 footer {
     position: absolute;
     bottom: 0px;

@@ -44,10 +44,28 @@
         <div id="deck">
             <!-- Begin slides -->
             <section>
-                <h1>
-                Code Time</h1>
-
+               <center> <h1>
+                Let's Code!!!</h1></center> 
+                <img src="../Images/letsCode.jpg" alt="#">
                 
+            </section>
+
+            <section>
+                <h2>
+                Start:</h2>
+                <ul>
+                    <li>We need to create a html document with the default tags</li>
+                </ul>
+                <pre class="prettyprint">
+<span class="tag">&lt;!DOCTYPE html></span>
+<span class="tag">&lt;html lang="en"></span>
+    <span class="tag">&lt;head></span>
+        <span class="tag">&lt;meta charset="utf-8" /></span>
+<span class="tag">&lt;title><span class="tag">&lt;/title></span></span>
+    <span class="tag">&lt;/head></span>
+    <span class="tag">&lt;body></span><span class="tag">&lt;/body></span>
+<span class="tag">&lt;/html></span>
+                </pre>
             </section>
 
 
@@ -88,12 +106,16 @@
                 <h2>
                 Step 3:</h2>
                 <ul>
-                    </br>
+                    <li>We need the jquery library.</li>
+                </ul>
+                <pre class="prettyprint">
+<span class="tag">&lt;script src="../Scripts/jquery-1.9.0.js" type="text/javascript">
+    <span class="tag">&lt;/script></span></span></pre>
+                  <ul>
                     <li>We have to asociate the anchor click event with the audio element.</li>
                     <li>We have to add some javascript code.<br></li>
                     <li>When we click on an anchor link the song should be loaded.</li>
-                    <li>We need the jquery library.</li>
-                </ul>
+                  </ul>
             </section>
 
             <section>
@@ -131,9 +153,59 @@ function play(link)
     myMusicPlayer[0].src = link.attr('href');
     myMusicPlayer[0].load();
     myMusicPlayer[0].play();
-}
-                </pre>
+}                </pre>
             </section>
+
+            <section>
+                <h2>Step 5:</h2>
+                  <ul></br>
+                  <li>Now we have to add a function for reproduce the next song when the current finish.</li>
+                      <li>For this, we will add a javascript eventlistener to the audio element when executes the 'ended' function. </li>
+                      <li>We search the next item in the playlist, and then we call the play function.</li>
+                      </ul>
+            </section>
+
+            <section>
+                <h2>Step 5: Adding EventListener</h2>
+                  <pre class="prettyprint">
+var tracks = myPlayList.find('li a');
+var playListLength = tracks.length;
+myMusicPlayer[0].addEventListener('ended', function()
+{
+    var link; playListIndex++;
+    if (playListIndex >= playListLength){ playListIndex = 0;
+        link = myPlayList.find('a')[0]; }
+    else { link = myPlayList.find('a')[playListIndex];}
+    play($(link));});
+</pre>
+            </section>
+
+
+             <section>
+                <h2>Step 6:Adding drag and drop</h2>
+                  <ul></br>
+                  <li>We will add the ability to drag a song to the desktop. </li>
+                  <li>For this we need to add the property draggable to the anchor element and add a class to identify them </li>
+                  </ul>
+                 <pre class="prettyprint">$('a').addClass('dragout');
+$('a').attr('draggable', 'true'); </pre>
+                 <ul><li>Now we have to create a funtion in javascript to handler the events that the draggable property allows to do in the anchor element. </li></ul>
+            </section>
+
+            <section>
+                <h2>Step 6:Adding drag and drop</h2>
+                <pre class="prettyprint">
+(function() {
+    var files = document.querySelectorAll('a.dragout');
+    for (var i = 0, file; file = files[i]; ++i) {
+    file.addEventListener('dragstart', function(e) {
+    var strippedUrl = document.location.toString().split("Views");
+    var href = this.getAttribute('href');
+    var dataDownloadUrl = 'audio/mpeg:' + href.substring(9, href.length).replace(' ', '%20') + ':' + strippedUrl[0].toString() + href.substring(3, href.length).replace('\\','/').replace(' ', '%20');
+    e.dataTransfer.setData('DownloadURL', dataDownloadUrl);
+        }, false);}})();
+</pre>
+                   </section>
         </div>
         <script type="text/javascript" src="../Scripts/jquery-1.9.0.js"></script>
         <script type="text/javascript" src="../Scripts/prettify.js"></script>
