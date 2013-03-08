@@ -208,17 +208,17 @@ else {
         <section>
             <div class="centerTitle">
                 JavaScript API - Web Sockets</div>
-                            <div class="centerImage" >
+            <div class="centerImage">
                 <img src="../Images/marketing-grand-junction-communication.png" alt="Web Socket" /></div>
         </section>
         <section>
             <h3 style="text-align: right;">
                 JavaScript API - Web Sockets</h3>
-            <h1>
-                &quot;The web has been largely built around the so called request/response paradigm
-                of HTTP.&quot;</h1>
             <h2>
-                Today&acute;s web app require&#8230;</h2>
+                &quot;The web has been largely built around the so called request/response paradigm
+                of HTTP.&quot;</h2>
+            <h2>
+                Today&rsquo;s web app require&#8230;</h2>
             <ul>
                 <li>Real time (minimal latency)</li>
                 <li>Full duplex </li>
@@ -231,17 +231,50 @@ else {
                 <li>Collaborative platforms</li>
                 <li>Finnancial applications</li>
             </ul>
+            <h2>
+                HTTP isn&rsquo;t really an ideal protocol for performing frequent requests as:</h2>
+            <ul>
+                <li>It&rsquo;s not optimized for speed</li>
+                <li>It utilizes a lot of bandwidth for every request with various headers etc sent with
+                    every request</li>
+                <li>To keep an application up to date many requests must be sent</li>
+                <li>Provides limited cross domain support (relying on workarounds such as JSONP <a
+                    href="http://remysharp.com/2007/10/08/what-is-jsonp/" rel="nofollow">http://remysharp.com/2007/10/08/what-is-jsonp/</a>)</li>
+                <li>Firewalls &amp; proxys sometimes buffer streaming/long polling solutions increasing
+                    latency</li>
+                <li>Long polling &amp; streaming solutions are not very scalable</li>
+            </ul>
         </section>
         <section>
             <h3 style="text-align: right;">
                 JavaScript API - Web Sockets</h3>
-            <h2>
-                According to W3C</h2>
+            <h1>
+                According to W3C</h1>
             <p>
                 &quot;Abstract: This specification defines an API that enables Web pages to use
                 the WebSocket protocol (defined by the IETF) for two-way communication with a remote
                 host.&quot;
             </p>
+            <h2>
+                WebSockets are a new technology that attempts to resolve some of these limitations by:</h2>
+            <ul>
+                <li>Sending the minimum amount of data necessary</li>
+                <li>Making more efficient usage of bandwidth</li>
+                <li>Providing cross domain support</li>
+                <li>Still operating over HTTP so it can transverse firewalls and proxies</li>
+                <li>Works with some load balancers (TCP l4)</li>
+                <li>Provides support for binary data (note some JavaScript implementations don&rsquo;t currently
+                    support this)</li>
+            </ul>
+            <h2>When would web sockets be a suitable protocol for your application?</h2>
+            <p>
+                You might want to consider using web sockets in the following scenarios:</p>
+            <ul>
+                <li>Games</li>
+                <li>Real time data</li>
+                <li>Chat applications</li>
+                <li>News tickers</li>
+            </ul>
         </section>
         <section>
             <h3 style="text-align: right;">
