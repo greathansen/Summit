@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <audio id="myMusicPlayer" preload="auto" tabindex="0" controls="">
+            <source src="..\Music\Fixed Frequencies.mp3" type="audio/mpeg" />
+
+        </audio>
+
+        <ul id="myPlayList">
+            <li>
+                <a href="..\Music\Fixed Frequencies.mp3">Fixed Frequencies</a>
+            </li>
+
+            <li>
+                <a href="..\Music\The Mercenary.mp3">The Mercenary</a>
+            </li>
+        </ul>
+        <script src="../Scripts/jquery-1.9.0.js" type="text/javascript"></script>
+        <script>
+
+            var myPlayList = $('#myPlayList');
+var playListIndex = 0;
+myPlayList.find('a').click(function(e)
+{
+    e.preventDefault();
+    var link = $(this);
+    playListIndex = link.parent().index();
+    play(link); // we have to create the function play.
+});
+
+            var myMusicPlayer = $('#myMusicPlayer');
+function play(link)
+{
+    myMusicPlayer[0].src = link.attr('href');
+    myMusicPlayer[0].load();
+    myMusicPlayer[0].play();
+} 
+
+      var tracks = myPlayList.find('li a');
+var playListLength = tracks.length;
+myMusicPlayer[0].addEventListener('ended', function()
+{
+    var link; playListIndex++;
+    if (playListIndex >= playListLength){ playListIndex = 0;
+        link = myPlayList.find('a')[0]; }
+    else { link = myPlayList.find('a')[playListIndex];}
+    play($(link));});
+
+    $('a').addClass('dragout');
+$('a').attr('draggable', 'true');
+    
+(function() {
+    var files = document.querySelectorAll('a.dragout');
+                
+    for (var i = 0, file; file = files[i]; ++i) {
+
+    file.addEventListener('dragstart', function(e) {
+                
+    var strippedUrl = document.location.toString().split("Views");
+    var href = this.getAttribute('href');
+
+    var dataDownloadUrl = 'audio/mpeg:' + href.substring(9, href.length).replace(' ', '%20') + ':' + strippedUrl[0].toString() + href.substring(3, href.length).replace('\\','/').replace(' ', '%20');
+    e.dataTransfer.setData('DownloadURL', dataDownloadUrl);
+        }, false);
+    }
+})();
+        </script>
+    </body>
+</html>
