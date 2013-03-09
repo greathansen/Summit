@@ -415,11 +415,11 @@ p {
                 <h2>Storage</h2>
             <h3 style="text-align: right;">
                 JavaScript API</h3>
-            </br><ul>
+            <ul>
             <li>With html5 and the javascript API allow save data on the client device usign different strategies.</li>
-            </br><h2>Web SQL Dabase</h2>
-            <li><br>We can create a structured data base in the client device</li>
-            </ul></br>
+            <h2>Web SQL Dabase</h2>
+            <li>We can create a structured data base in the client device</li>
+            </ul>
             <pre class="prettyprint">
 var db = window.openDatabase("DBName", "1.0", "description",
  5*1024*1024); //5MB
@@ -466,10 +466,7 @@ transaction.objectStore('ObjectStoreName').openCursor();
             <h2>Application Cache</h2>
                <h3 style="text-align: right;">
                 JavaScript API</h3> 
-        <ul>
-            <li>It's a key value mapping, so we don't have to iterate for each item</li>
-        <li>The key value support only string-to-string mapping</li>
-        </ul></br>
+
              <pre class="prettyprint">
   <span class="tag">&lt;html manifest="cache.appcache"></span>
 window.applicationCache.addEventListener('updateready', function(e) {
