@@ -9,7 +9,8 @@
         <header id="masterHeader">
             <nav id="navigation">
                 <ul>
-                    <li class="selected"><a id="Summit" href="#">Summit 2013</a></li>
+                    <li class="selected"><a id="Presenters" href="#">Summit 2013</a></li>
+                    <li ><a id="Summit" href="#">Agenda</a></li>
                     <li><a id="WhatIsNew" href="#">What's new in HTML 5</a></li>
                     <li><a id="LiveDemo" href="#">Live Demo!!!</a></li>
                     <li><a id="References" href="#">References</a></li>
@@ -26,6 +27,9 @@
 
                         switch (anchorId)
                         {
+                            case "Presenters":
+                                source = "Views/Presenters.html";
+                                break;
                             case "Summit":
                                 source = "Views/Summit.html";
                                 break;
@@ -65,7 +69,7 @@
                 
             });
         </script>
-        <iframe id="ifr" style="overflow:hidden;" src="Views/Summit.html"></iframe>
+        <iframe id="ifr" style="overflow:hidden;" src="Views/Presenters.html"></iframe>
 
         <footer><span>>>>We love nice solutions!!!<<<</span></footer>
     </body>
