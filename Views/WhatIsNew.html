@@ -393,6 +393,147 @@ p {
         </section>
 
         <section>
+            <div class="centerTitle">Java Script API</div>
+            <h3 style="text-align: right;">
+                JavaScript API</h3>
+		  <div></br>
+                    <ul>
+                        <li>A lot of new features to have native implementation were added</li>
+                        <li>File API to have native drag and drop, desktop drag in</li>
+                        <li>FileSystem API allows to create, delete and save files in the user machine.</li>
+                        <li>Web SQL Storage</li>
+                        <li>IndexDB</li>
+                        <li>Web Storage</li>
+                        <li>Aplication Cache</li>
+                        <li>WebWorkers</li>
+                        <li>WebSockets</li>
+                    </ul>
+                </div>                
+        </section>
+
+        <section>
+                <h2>Storage</h2>
+            <h3 style="text-align: right;">
+                JavaScript API</h3>
+            </br><ul>
+            <li>With html5 and the javascript API allow save data on the client device usign different strategies.</li>
+            </br><h2>Web SQL Dabase</h2>
+            <li><br>We can create a structured data base in the client device</li>
+            </ul></br>
+            <pre class="prettyprint">
+var db = window.openDatabase("DBName", "1.0", "description",
+ 5*1024*1024); //5MB
+db.transaction(function(tx) {
+  tx.executeSql("SELECT * FROM test", [], successCallback, errorCallback);
+});</pre>
+
+            </section>
+        <section>   
+            <h2>Index DB</h2>
+            <h3 style="text-align: right;">
+                JavaScript API</h3> 
+        <ul>
+            <li>We have a key value, so we don't have to iterate for each item</ul>
+            </br>
+             <pre class="prettyprint">
+ var idbRequest = window.indexedDB.open('DatabaseName');
+idbRequest.onsuccess = function(event) {
+  var db = event.srcElement.result;
+  var transaction = db.transaction([], IDBTransaction.READ_ONLY);
+  var curRequest = 
+transaction.objectStore('ObjectStoreName').openCursor();
+  curRequest.onsuccess = ...;
+};</pre>
+        </section>
+
+        <section>   
+            <h2>Web Storage</h2> 
+              <h3 style="text-align: right;">
+                JavaScript API</h3>
+        <ul>
+            <li>It's a key value mapping, so we don't have to iterate for each item</li>
+        <li>The key value support only string-to-string mapping</li>
+        </ul></br>
+             <pre class="prettyprint">
+    sessionStorage.MFUserName = 'Summit';
+    //or
+    window.localStorage.setItem('MFUserName', 'Summit');
+    return true;
+</pre>
+        </section>
+
+         <section>   
+            <h2>Application Cache</h2>
+               <h3 style="text-align: right;">
+                JavaScript API</h3> 
+        <ul>
+            <li>It's a key value mapping, so we don't have to iterate for each item</li>
+        <li>The key value support only string-to-string mapping</li>
+        </ul></br>
+             <pre class="prettyprint">
+  <span class="tag">&lt;html manifest="cache.appcache"></span>
+window.applicationCache.addEventListener('updateready', function(e) {
+  if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+    window.applicationCache.swapCache();
+    if (confirm('A new version of this site is available. Load it?')) {
+      window.location.reload();
+    }
+  }
+}, false);
+</pre>
+        </section>
+
+
+        <section>   
+            <h2>File API</h2> 
+              <h3 style="text-align: right;">
+                JavaScript API</h3>
+        <ul>
+            <li>This API allows create, delete, open files in the user device</li>
+        <li>We can create folders</li>
+        </ul></br>
+             <pre class="prettyprint">
+window.requestFileSystem(window.TEMPORARY, 1024 * 1024, function(fs) {
+// fs.root is a DirectoryEntry object.
+fs.root.getFile('log.txt', {create: true}, function(fileEntry) {
+fileEntry.createWriter(function(writer) {  
+// writer is a FileWriter object.
+    writer.onwrite = function(e) { ... };
+    writer.onerror = function(e) { ... };
+    var bb = new BlobBuilder();
+    bb.append('Hello World!');
+     writer.write(bb.getBlob('text/plain'));
+    }, opt_errorHandler);  }
+}, opt_errorHandler);
+</pre>
+        </section>
+
+        <section>   
+            <h2>File API</h2> 
+              <h3 style="text-align: right;">
+                JavaScript API</h3>
+        <ul>
+            <li>We have native drag and drop functionallity</li>
+        </ul></br>
+             <pre class="prettyprint">
+(function() {
+var files = document.querySelectorAll('a.dragout');
+for (var i = 0, file; file = files[i]; ++i) {
+file.addEventListener('dragstart', function(e) {
+var strippedUrl = document.location.toString().split("Views");
+var href = this.getAttribute('href');
+var dataDownloadUrl = 'audio/mpeg:' + href.substring(9, href.length).
+replace(' ', '%20') + ':' + strippedUrl[0].toString() + 
+href.substring(3, href.length).replace('\\','/').replace(' ', '%20');
+e.dataTransfer.setData('DownloadURL', dataDownloadUrl);
+}, false);
+}
+})();
+
+</pre>
+        </section>
+
+        <section>
             <div class="centerTitle">
                 JavaScript API - Web Workers</div>
             <div class="centerImage">
@@ -401,8 +542,8 @@ p {
         <section>
             <h3 style="text-align: right;">
                 JavaScript API - Web Workers</h3>
-            <h1>
-                The concurrency problem</h1>
+            <h2>
+                The concurrency problem</h2>
             <div>
                 <div>
                     <img src="../Images/geeknpoke-concurrency.png" alt="Concurrency comic" />
